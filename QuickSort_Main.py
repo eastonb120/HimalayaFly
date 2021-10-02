@@ -18,6 +18,11 @@ class item:
         self.__name = name
         self.__price = price
 
+# Override str(instantiatedObjName) to print a string to conveniently write to CSV file
+    def __str__(self):
+        return str(self.itemNumber) + "," + str(self.quantity) + "," + str(self.binNumber) + ",\"" + str(self.inStock) \
+               + "\",\"" + self.name + "\"," + str(self.price)
+
 # class attribute methods for __itemNumber
     @property
     def itemNumber(self):
