@@ -4,7 +4,7 @@
 # We are condensing the features of the items to create a universal description able to support to all items. 
 # This makes the items more manageable.
 # By creating a universal description of an item, we are generalizing the unique items.
-# All the unique items can now belong to a item set, AKA the class.
+# All the unique items can now belong to an item set, AKA the class.
 
 # TODO remove the default args and construct in another form
 class item:
