@@ -29,25 +29,11 @@ class item:
     def getPrice(self):
         return self.price
 
-#
-# Data representation?
-# TODO This constructor loop will use default values to build out the list so we can start testing the algorithm
-
-
-binNumbers = [56, 13, 25, 49, 65, 3, 53, 82, 9, 40, 31, 78, 17, 61, 47]
-
-
-bins = list()
-for distinctNumber in binNumbers:
-    bins.append(item(distinctNumber))
-
 # This is our quicksort function. It uses recursion
-
-
 def quickSort(itemList):
 
     # This is the base case, we can't sort a list that contains only one item so we'll send it back up the call stack
-    if len(itemList) == 1:
+    if len(itemList) <= 1:
         return itemList
     else:
         # This will remove the right most value from the list given to the algorithm
@@ -73,10 +59,20 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-sortedList = ""
 
-for item in quickSort(bins):
-    sortedList = sortedList + " " + str(item.getItemNumber())
+# Driver
+def main():
 
-print(sortedList)
+    bins = list()
+    binNumbers = [56, 13, 25, 49, 65, 3, 53, 82, 9, 40, 31, 78, 17, 61, 47]
+    for distinctNumber in binNumbers:
+        bins.append(item(distinctNumber))
 
+    sortedList = ""
+    for itemBin in quickSort(bins):
+        sortedList = sortedList + " " + str(itemBin.getItemNumber())
+
+    print(sortedList)
+
+
+main()
