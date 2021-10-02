@@ -1,9 +1,10 @@
 # Item ADT as per project requirements
 
-# This class is an abstraction of item contained in a bins. This is because we are stripping away features of
-# items in order to make a description of the item more manageable to meet our end goal in a reasonable amount of time.
-# Additionally, this is a generalization of items also. We are generalizing such that all of the unique items in the
-# bins are just an item. Granted we have a name attribute, but it's still just an item.
+# This class is an abstraction of items contained in bins.
+# We are condensing the features of the items to create a universal description able to support to all items. 
+# This makes the items more manageable.
+# By creating a universal description of an item, we are generalizing the unique items.
+# All the unique items can now belong to a item set, AKA the class.
 
 # TODO remove the default args and construct in another form
 class item:
