@@ -7,6 +7,7 @@
 # All the unique items can now belong to an item set, AKA the class.
 
 # TODO remove the default args and construct in another form
+#NOTE GOING FORWARD! in csv file, inStock is 1 or 0 NOT BOOLEAN!!!
 class item:
     def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
         self.itemNumber = itemNumber
@@ -16,6 +17,7 @@ class item:
         self.name = name
         self.price = price
 
+# getter methods
     def getItemNumber(self):
         return self.itemNumber
     def getQuantity(self):
@@ -28,6 +30,22 @@ class item:
         return self.name
     def getPrice(self):
         return self.price
+    
+# setter methods 
+# example of use in main(): 
+# setItemNumber(5)
+    def setItemNumber(self, x):
+        self.itemNumber = x
+    def setQuantity(self, x):
+        self.quantity = x
+    def setBinNumber(self, x):
+        self.binNumber = x
+    def setIsInStock(self, x)        #input 1 for in stock, 0 for not in stock?
+        self.inStock = x
+    def setName(self, x)             #does Python need help here for strings, = "x" instead?
+        self.name = x
+    def setPrice(self, x)
+        self.price = x
 
 # This is our quicksort function. It uses recursion
 def quickSort(itemList):
