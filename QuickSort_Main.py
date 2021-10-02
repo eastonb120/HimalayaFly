@@ -129,6 +129,20 @@ def quickSort(itemList):
 
 # Driver
 def main():
+    
+    itemSet = []
+    try:
+        inFile = open("InventoryManifest.csv", "r")
+        csvReader = csv.DictReader(inFile)
+        header = next(csvReader)
+
+        for row in csvReader:
+            itemSet.append(row)
+
+    except IOError:
+        print("File Not Located")
+
+    print(itemSet)
 
     bins = list()
     binNumbers = [56, 13, 25, 49, 65, 3, 53, 82, 9, 40, 31, 78, 17, 61, 47]
