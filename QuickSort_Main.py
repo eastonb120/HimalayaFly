@@ -10,44 +10,86 @@
 
 class item:
     def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
-        self.itemNumber = itemNumber
-        self.quantity = quantity
-        self.binNumber = binNumber
-        self.inStock = inStock
-        self.name = name
-        self.price = price
+        #Underscore indicated that the attribute is private
+        self.__itemNumber = itemNumber
+        self.__quantity = quantity
+        self.__binNumber = binNumber
+        self.__inStock = inStock
+        self.__name = name
+        self.__price = price
 
-# getter methods
+# class attribute methods for __itemNumber
+    @property
+    def itemNumber(self):
+        return self.__itemNumber
+    @itemNumber.setter
+    def itemNumber(self, itemNumber):
+        self.__itemNumber = itemNumber
     def getItemNumber(self):
         return self.itemNumber
-    def getQuantity(self):
-        return self.quantity
-    def getBinNumber(self):
-        return self.binNumber
-    def isInStock(self):
-        return self.inStock
-    def getName(self):
-        return self.name
-    def getPrice(self):
-        return self.price
-    
-# setter methods 
-# example of use in main(): 
-# instantiatedClassObj.setItemNumber(5)
     def setItemNumber(self, itemNumber):
         self.itemNumber = itemNumber
+
+# class attribute methods for __quantity
+    @property
+    def quantity(self):
+        return self.__quantity
+    @quantity.setter
+    def quantity(self, quantity):
+        self.__quantity = quantity
+    def getQuantity(self):
+        return self.quantity
     def setQuantity(self, quantity):
         self.quantity = quantity
+
+# class attribute methods for __binNumber
+    @property
+    def binNumber(self):
+        return self.__binNumber
+    @binNumber.setter
+    def binNumber(self, binNumber):
+        self.__binNumber = binNumber
+    def getBinNumber(self):
+        return self.binNumber
     def setBinNumber(self, quantity):
         self.binNumber = quantity
-    # input 1 for in stock, 0 for not in stock?
+
+#class attribute methods for __inStock
+    @property
+    def inStock(self):
+        return self.__inStock
+    @inStock.setter
+    def inStock(self, inStock):
+        self.__inStock = inStock
+    def isInStock(self):
+        return self.inStock
     def setIsInStock(self, inStock):
         self.inStock = inStock
-    # does Python need help here for strings, = "x" instead?    
+
+# class attribute methods for __getName
+    @property
+    def name(self):
+        return self.__name
+    @name.setter
+    def name(self, name):
+        self.__name = name
+    def getName(self):
+        return self.name
     def setName(self, name):
         self.name = name
+
+# class attribute methods for __getName
+    @property
+    def price(self):
+        return self.__price
+    @name.setter
+    def price(self, price):
+        self.__price = price
+    def getPrice(self):
+        return self.price
     def setPrice(self, price):
         self.price = price
+    
 
 # This is our quicksort function. It uses recursion
 def quickSort(itemList):
