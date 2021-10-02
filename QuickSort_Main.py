@@ -8,6 +8,8 @@
 
 # TODO remove the default args and construct in another form
 
+import csv
+
 class item:
     def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
         #Underscore indicated that the attribute is private
