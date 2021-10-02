@@ -10,7 +10,7 @@
 
 class item:
     def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
-        #Underscore indicated that the attribute is private
+        # Double underscore indicates that the attribute is private
         self.__itemNumber = itemNumber
         self.__quantity = quantity
         self.__binNumber = binNumber
@@ -59,7 +59,7 @@ class item:
     def setBinNumber(self, quantity):
         self.binNumber = quantity
 
-#class attribute methods for __inStock
+# class attribute methods for __inStock
     @property
     def inStock(self):
         return self.__inStock
@@ -83,11 +83,11 @@ class item:
     def setName(self, name):
         self.name = name
 
-# class attribute methods for __getName
+# class attribute methods for __price
     @property
     def price(self):
         return self.__price
-    @name.setter
+    @price.setter
     def price(self, price):
         self.__price = price
     def getPrice(self):
@@ -137,8 +137,5 @@ def main():
 
     sortedList = ""
     for itemBin in quickSort(bins):
-        sortedList = sortedList + " " + str(itemBin.getItemNumber())
-
-    print(sortedList)
-
+        print(itemBin)
 main()
