@@ -1,16 +1,16 @@
 "item_number"," quantity"," bin_num"," in_stock"," name"," price"
-56,10,69,"true","Bolt",121.73
-13,13,72,"true","Hat",47.82
-25,10,32,"true","Key Chain",78.26
-49,10,40,"true","Rock",108.69
-65,7,47,"true","Chair",73.91
-3,13,23,"true","Pants (XL)",95.65
-53,13,148,"true","Cup",69.56
-82,0,25,"false","Plate",91.3
-9,10,40,"true","Duct Tape",104.34
-40,7,131,"true","Plastic Snake",126.08
-31,13,115,"true","Greeting Card",65.21
-78,7,59,"true","Light Bulb",60.86
-17,10,38,"true","Butterfly Valve",86.95
-61,10,92,"true","Dog Collar",104.34
-47,4,70,"true","Motor Oil",126.08
+56,10,69,"True","Bolt",121.73
+13,13,72,"True","Hat",47.82
+25,10,32,"True","Key Chain",78.26
+49,10,40,"True","Rock",108.69
+65,7,47,"True","Chair",73.91
+3,13,23,"True","Pants (XL)",95.65
+53,13,148,"True","Cup",69.56
+82,0,25,"False","Plate",91.3
+9,10,40,"True","Duct Tape",104.34
+40,7,131,"True","Plastic Snake",126.08
+31,13,115,"True","Greeting Card",65.21
+78,7,59,"True","Light Bulb",60.86
+17,10,38,"True","Butterfly Valve",86.95
+61,10,92,"True","Dog Collar",104.34
+47,4,70,"True","Motor Oil",126.08
