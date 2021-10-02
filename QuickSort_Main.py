@@ -40,11 +40,13 @@ class item:
         self.quantity = x
     def setBinNumber(self, x):
         self.binNumber = x
-    def setIsInStock(self, x)        #input 1 for in stock, 0 for not in stock?
+    # input 1 for in stock, 0 for not in stock?
+    def setIsInStock(self, x):
         self.inStock = x
-    def setName(self, x)             #does Python need help here for strings, = "x" instead?
+    # does Python need help here for strings, = "x" instead?    
+    def setName(self, x):
         self.name = x
-    def setPrice(self, x)
+    def setPrice(self, x):
         self.price = x
 
 # This is our quicksort function. It uses recursion
