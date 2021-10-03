@@ -163,17 +163,17 @@ def CSVitemImporter(fileName):
     try: 
         # open a file to read
         csv_file = open(fileName, mode='r')
-        # DictReader uses first row, which contains headers here, to refer to columns in csv
+        # DictReader uses first row, which contains headers here, to refer to columns in CSV
         csv_reader = csv.DictReader(csv_file)
         # headers in csv have not been read yet
         readHeader = False
-        # the csv file is read row by row; after the header, items are created and added to the list
+        # the CSV file is read row by row; after the header, items are created and added to the list
         for row in csv_reader:
             if readHeader == False:
                 pass
                 readHeader = True
             else:
-                # adds an item created from a row in the csv to the list
+                # adds an item created from a row in the CSV to the list
                 itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]), row["in_stock"]
                                      , row["name"], float(row["price"])))
     except IOError:
@@ -193,17 +193,17 @@ def CSVitemImporter(fileName):
 def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
     # open a file to write in
     fileObject = open(fileName, "w")
-    # prints the headers for the output csv file
+    # prints the headers for the output CSV file
     if printOutputToConsole:
         print(CSVheaderString)
-    # writes the headers for the output csv file in the file
+    # writes the headers for the output CSV file in the file
     fileObject.write(CSVheaderString + "\n")
-    # cycles through items in item list and writes the items to separate lines in csv
+    # cycles through items in item list and writes the items to separate lines in CSV
     for itemObj in itemList:
         if printOutputToConsole:
             print(str(itemObj))
         fileObject.write(str(itemObj) + "\n")
-    # closes csv file
+    # closes CSV file
     fileObject.close()
 
 
