@@ -333,6 +333,7 @@ def quickSort(itemList):
         greaterThan = list()
         # This is where the sorting occurs. If the item is less than the pivot item, it goes to lesserThan than list
         for item in itemList:
+            # <= allows duplicate value to pivot value to go to lessThan
             if (item.getItemNumber() <= pivotItem.getItemNumber()):
                 lesserThan.append(item)
             # If an item is greaterThan the value it is added to it's respective list.
@@ -349,9 +350,12 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-# This creates an item list from a csv file
-# INPUT: file name
-# OUTPUT: list of items
+######################################################################################################
+## Function:  CSVitemImporter
+## Purpose:   Creates a list of item objects from a CSV file
+## Arguments: fileName - The name of the file to import
+## Returns:   itemList - A list of item objects
+######################################################################################################
 def CSVitemImporter(fileName):
     # list to hold our item objects
     itemList = list()
@@ -359,17 +363,17 @@ def CSVitemImporter(fileName):
     try: 
         # open a file to read
         csv_file = open(fileName, mode='r')
-        # DictReader uses first row, which contains headers here, to refer to columns in csv
+        # DictReader uses first row, which contains headers here, to refer to columns in CSV
         csv_reader = csv.DictReader(csv_file)
         # headers in csv have not been read yet
         readHeader = False
-        # the csv file is read row by row; after the header, items are created and added to the list
+        # the CSV file is read row by row; after the header, items are created and added to the list
         for row in csv_reader:
             if readHeader == False:
                 pass
                 readHeader = True
             else:
-                # adds an item created from a row in the csv to the list
+                # adds an item created from a row in the CSV to the list
                 itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]), row["in_stock"]
                                      , row["name"], float(row["price"])))
     except IOError:
@@ -377,23 +381,29 @@ def CSVitemImporter(fileName):
 
     return itemList
 
-# This creates an output csv file
-# INPUT: list of items, string for csv headers, file name
-# OUTPUT: none
+######################################################################################################
+## Function:  CSVitemWriter
+## Purpose:   Creates a CSV file from a list of item objects
+## Arguments: itemList - a list of item objects
+##            CSVheaderString - String containing headers for the CSV file
+##            fileName - NThe name of the file to output
+##            printOutputToConsole - Determines if output is printed to console
+## Returns:   Nothing
+######################################################################################################
 def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
     # open a file to write in
     fileObject = open(fileName, "w")
-    # prints the headers for the output csv file
+    # prints the headers for the output CSV file
     if printOutputToConsole:
         print(CSVheaderString)
-    # writes the headers for the output csv file in the file
+    # writes the headers for the output CSV file in the file
     fileObject.write(CSVheaderString + "\n")
-    # cycles through items in item list and writes the items to separate lines in csv
+    # cycles through items in item list and writes the items to separate lines in CSV
     for itemObj in itemList:
         if printOutputToConsole:
             print(str(itemObj))
         fileObject.write(str(itemObj) + "\n")
-    # closes csv file
+    # closes CSV file
     fileObject.close()
 
 
