@@ -133,7 +133,7 @@ def quickSort(itemList):
         greaterThan = list()
         # This is where the sorting occurs. If the item is less than the pivot item, it goes to lesserThan than list
         for item in itemList:
-            # <= allows duplicate value to pivot value to go to either lessThan or geaterThan
+            # <= allows duplicate value to pivot value to go to lessThan
             if (item.getItemNumber() <= pivotItem.getItemNumber()):
                 lesserThan.append(item)
             # If an item is greaterThan the value it is added to it's respective list.
