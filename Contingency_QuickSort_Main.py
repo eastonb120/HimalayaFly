@@ -164,8 +164,8 @@ def CSVitemImporter(fileName):
                 pass
                 readHeader = True
             else:
-                itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]), row["in_stock"]
-                                     , row["name"], float(row["price"])))
+                itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]),
+                                     bool(row["in_stock"]), row["name"], float(row["price"])))
     except IOError:
         print("File Not Located or Locked by Another Application")
 
