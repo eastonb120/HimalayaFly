@@ -117,9 +117,6 @@ class item:
         self.price = price
 
 
-class FileExists(Exception):
-    pass
-
 
 # This is our quicksort function. It uses recursion.
 # INPUT: list of items
@@ -184,23 +181,20 @@ def CSVitemImporter(fileName):
 # INPUT: list of items, string for csv headers, file name
 # OUTPUT: none
 def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
-    if os.exists(fileName):
-        raise FileExists("File already exists.")
-    else:
-        # open a file to write in
-        fileObject = open(fileName, "w")
-        # prints the headers for the output csv file
+    # open a file to write in
+    fileObject = open(fileName, "w")
+    # prints the headers for the output csv file
+    if printOutputToConsole:
+        print(CSVheaderString)
+    # writes the headers for the output csv file in the file
+    fileObject.write(CSVheaderString + "\n")
+    # cycles through items in item list and writes the items to separate lines in csv
+    for itemObj in itemList:
         if printOutputToConsole:
-            print(CSVheaderString)
-        # writes the headers for the output csv file in the file
-        fileObject.write(CSVheaderString + "\n")
-        # cycles through items in item list and writes the items to separate lines in csv
-        for itemObj in itemList:
-            if printOutputToConsole:
-                print(str(itemObj))
-            fileObject.write(str(itemObj) + "\n")
-        # closes csv file
-        fileObject.close()
+            print(str(itemObj))
+        fileObject.write(str(itemObj) + "\n")
+    # closes csv file
+    fileObject.close()
 
 
 # Driver
