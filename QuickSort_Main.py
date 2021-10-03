@@ -8,6 +8,8 @@
 
 # TODO remove the default args and construct in another form
 
+import csv
+
 class item:
     def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
         # Double underscore indicates that the attribute is private
@@ -126,11 +128,9 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-
-# Driver
-def main():
-    
+def importItemSet():
     itemSet = []
+    
     try:
         inFile = open("InventoryManifest.csv", "r")
         csvReader = csv.DictReader(inFile)
@@ -142,7 +142,11 @@ def main():
     except IOError:
         print("File Not Located")
 
-    print(itemSet)
+    return itemSet
+    
+    
+# Driver
+def main():
 
     bins = list()
     binNumbers = [56, 13, 25, 49, 65, 3, 53, 82, 9, 40, 31, 78, 17, 61, 47]
