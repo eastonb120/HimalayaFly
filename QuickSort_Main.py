@@ -177,5 +177,9 @@ def main():
         sortedList = sortedList + " " + str(itemBin.getItemNumber())
 
     print(sortedList)
+    
+    #to create list of items
+    #lists_from_csv = importInventory()
+    #itemList = createitemList(lists_from_csv)
 
 main()
