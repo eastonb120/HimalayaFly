@@ -149,9 +149,12 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-# This creates an item list from a csv file
-# INPUT: file name
-# OUTPUT: list of items
+######################################################################################################
+## Function:  CSVitemImporter
+## Purpose:   Creates a list of item objects from a CSV file
+## Arguments: fileName - The name of the file to import
+## Returns:   itemList - A list of item objects
+######################################################################################################
 def CSVitemImporter(fileName):
     # list to hold our item objects
     itemList = list()
@@ -177,9 +180,15 @@ def CSVitemImporter(fileName):
 
     return itemList
 
-# This creates an output csv file
-# INPUT: list of items, string for csv headers, file name
-# OUTPUT: none
+######################################################################################################
+## Function:  CSVitemWriter
+## Purpose:   Creates a CSV file from a list of item objects
+## Arguments: itemList - a list of item objects
+##            CSVheaderString - String containing headers for the CSV file
+##            fileName - NThe name of the file to output
+##            printOutputToConsole - Determines if output is printed to console
+## Returns:   Nothing
+######################################################################################################
 def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
     # open a file to write in
     fileObject = open(fileName, "w")
