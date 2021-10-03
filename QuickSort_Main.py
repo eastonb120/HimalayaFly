@@ -85,11 +85,11 @@ class item:
     def setName(self, name):
         self.name = name
 
-# class attribute methods for __getName
+# class attribute methods for __getPrice
     @property
     def price(self):
         return self.__price
-    @name.setter
+    @price.setter
     def price(self, price):
         self.__price = price
     def getPrice(self):
@@ -128,21 +128,40 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-def importItemSet():
-    itemSet = []
-    
-    try:
-        inFile = open("InventoryManifest.csv", "r")
-        csvReader = csv.DictReader(inFile)
-        header = next(csvReader)
+# creates list of list containing a row from csv
+def importInventory():
+    with open('InventoryManifest.csv', newline='') as f:
+          reader = csv.reader(f)
 
-        for row in csvReader:
-            itemSet.append(row)
+          lists_from_csv = []
+          for row in reader:
+                lists_from_csv.append(row)
 
-    except IOError:
-        print("File Not Located")
+          print("The csv file has been successfully imported.\n")
+    return lists_from_csv
 
-    return itemSet
+# creates Item class objects from csv list
+def createItemList(lists_from_csv):
+    item_list = []
+    i = 0
+    while len(lists_from_csv) > i:
+        # get one item
+        individual_item = lists_from_csv[i]
+
+        # get each attribute 
+        item_num = individual_item[0]
+        item_quantity = individual_item[1]
+        item_bin_num = individual_item[2]
+        item_in_stock = individual_item[3]
+        item_name = individual_item[4]
+        item_price = individual_item[5]
+        
+        new_item = item(item_num, item_quantity, item_bin_num, item_in_stock, item_name, item_price)
+        item_list.append(new_item)
+        
+        i += 1
+
+    return item_list
     
     
 # Driver
