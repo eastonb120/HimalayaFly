@@ -1,4 +1,4 @@
-"item_number"," quantity"," bin_num"," in_stock"," name"," price"
+"item_number","quantity","bin_num","in_stock","name","price"
 56,10,69,"True","Bolt",121.73
 13,13,72,"True","Hat",47.82
 25,10,32,"True","Key Chain",78.26

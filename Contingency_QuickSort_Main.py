@@ -1,3 +1,7 @@
+import csv
+import os.path as os
+
+
 # Item ADT as per project requirements
 
 # This class is an abstraction of items contained in bins.
@@ -9,7 +13,7 @@
 # TODO remove the default args and construct in another form
 
 class item:
-    def __init__(self, itemNumber, quantity = 20, binNumber = 16, inStock = True, name = 'item', price = 1.25):
+    def __init__(self, itemNumber, quantity=20, binNumber=16, inStock=True, name='item', price=1.25):
         # Double underscore indicates that the attribute is private
         self.__itemNumber = itemNumber
         self.__quantity = quantity
@@ -18,87 +22,108 @@ class item:
         self.__name = name
         self.__price = price
 
-# Override str(instantiatedObjName) to print a string to conveniently write to CSV file
+    # Override str(instantiatedObjName) to print a string to conveniently write to CSV file
     def __str__(self):
         return str(self.itemNumber) + "," + str(self.quantity) + "," + str(self.binNumber) + ",\"" + str(self.inStock) \
                + "\",\"" + self.name + "\"," + str(self.price)
 
-# class attribute methods for __itemNumber
+    # class attribute methods for __itemNumber
     @property
     def itemNumber(self):
         return self.__itemNumber
+
     @itemNumber.setter
     def itemNumber(self, itemNumber):
         self.__itemNumber = itemNumber
+
     def getItemNumber(self):
         return self.itemNumber
+
     def setItemNumber(self, itemNumber):
         self.itemNumber = itemNumber
 
-# class attribute methods for __quantity
+    # class attribute methods for __quantity
     @property
     def quantity(self):
         return self.__quantity
+
     @quantity.setter
     def quantity(self, quantity):
         self.__quantity = quantity
+
     def getQuantity(self):
         return self.quantity
+
     def setQuantity(self, quantity):
         self.quantity = quantity
 
-# class attribute methods for __binNumber
+    # class attribute methods for __binNumber
     @property
     def binNumber(self):
         return self.__binNumber
+
     @binNumber.setter
     def binNumber(self, binNumber):
         self.__binNumber = binNumber
+
     def getBinNumber(self):
         return self.binNumber
+
     def setBinNumber(self, quantity):
         self.binNumber = quantity
 
-# class attribute methods for __inStock
+    # class attribute methods for __inStock
     @property
     def inStock(self):
         return self.__inStock
+
     @inStock.setter
     def inStock(self, inStock):
         self.__inStock = inStock
+
     def isInStock(self):
         return self.inStock
+
     def setIsInStock(self, inStock):
         self.inStock = inStock
 
-# class attribute methods for __getName
+    # class attribute methods for __getName
     @property
     def name(self):
         return self.__name
+
     @name.setter
     def name(self, name):
         self.__name = name
+
     def getName(self):
         return self.name
+
     def setName(self, name):
         self.name = name
 
-# class attribute methods for __price
+    # class attribute methods for __price
     @property
     def price(self):
         return self.__price
+
     @price.setter
     def price(self, price):
         self.__price = price
+
     def getPrice(self):
         return self.price
+
     def setPrice(self, price):
         self.price = price
-    
+
+
+class FileExists(Exception):
+    pass
+
 
 # This is our quicksort function. It uses recursion
 def quickSort(itemList):
-
     # This is the base case, we can't sort a list that contains only one item so we'll send it back up the call stack
     if len(itemList) <= 1:
         return itemList
@@ -110,9 +135,9 @@ def quickSort(itemList):
         greaterThan = list()
         # This is where the sorting occurs. If the item is less than the pivot item, it goes to lesserThan than list
         for item in itemList:
-            if (item.getItemNumber() < pivotItem.getItemNumber()):
+            if (item.getItemNumber() <= pivotItem.getItemNumber()):
                 lesserThan.append(item)
-        # If an item is greaterThan the value it is added to it's respective list.
+            # If an item is greaterThan the value it is added to it's respective list.
             else:
                 greaterThan.append(item)
 
@@ -127,29 +152,48 @@ def quickSort(itemList):
         return returnList
 
 
+def CSVitemImporter(fileName):
+    itemList = list()
+
+    try:
+        csv_file = open(fileName, mode='r')
+        csv_reader = csv.DictReader(csv_file)
+        readHeader = False
+        for row in csv_reader:
+            if readHeader == False:
+                pass
+                readHeader = True
+            else:
+                itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]), row["in_stock"]
+                                     , row["name"], float(row["price"])))
+    except IOError:
+        print("File Not Located or Locked by Another Application")
+
+    return itemList
+
+
+def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
+    if os.exists(fileName):
+        raise FileExists("File already exists.")
+    else:
+        fileObject = open(fileName, "w")
+        # Write the header to the output CSV file
+        if printOutputToConsole:
+            print(CSVheaderString)
+        fileObject.write(CSVheaderString + "\n")
+        # Write the items to separate lines in the CSV
+        for itemObj in itemList:
+            if printOutputToConsole:
+                print(str(itemObj))
+            fileObject.write(str(itemObj) + "\n")
+        fileObject.close()
+
+
 # Driver
 def main():
-    
-    itemSet = []
-    try:
-        inFile = open("InventoryManifest.csv", "r")
-        csvReader = csv.DictReader(inFile)
-        header = next(csvReader)
+    inputFile = "InventoryManifest.csv"
+    outputFile = "InventoryManifest_Output.csv"
+    CSVheadString = '"item_number","quantity","bin_num","in_stock","name","price"'
+    CSVitemWriter(quickSort(CSVitemImporter(inputFile)), CSVheadString, outputFile)
 
-        for row in csvReader:
-            itemSet.append(row)
-
-    except IOError:
-        print("File Not Located")
-
-    print(itemSet)
-
-    bins = list()
-    binNumbers = [56, 13, 25, 49, 65, 3, 53, 82, 9, 40, 31, 78, 17, 61, 47]
-    for distinctNumber in binNumbers:
-        bins.append(item(distinctNumber))
-
-    sortedList = ""
-    for itemBin in quickSort(bins):
-        print(itemBin)
 main()
