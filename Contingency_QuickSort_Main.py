@@ -1,5 +1,12 @@
 import csv
-import os.path as os
+######################################################################################################
+## QuickSort Item ADT
+## Date: 10/3/2021
+## Version 1.0
+## Author: Easton Birdsong and Jessica Oh
+## Arguments: No Command Line Args
+##
+######################################################################################################
 
 
 # Item ADT as per project requirements
@@ -11,8 +18,27 @@ import os.path as os
 # All the unique items can now belong to an item set, AKA the class.
 
 # abstracted item ADT
+######################################################################################################
+## Class: item
+## Purpose: ADT acts as an abstraction of items in a store.
+######################################################################################################
+
 class item:
-    def __init__(self, itemNumber, quantity=20, binNumber=16, inStock='1', name='item', price=1.25):
+
+    ######################################################################################################
+    ## Function: __init__
+    ## Purpose: Constructor of the item class
+    ## Arguments: itemNumber - Manufacturer Item Number
+    ##            quatity - Quantity of Items
+    ##            binNumber - The bin in which the item resides
+    ##            inStock - Are there any items in inventory
+    ##            name - Item name
+    ##            price - The price of the item.
+    ##
+    ## Returns: Instantiated item object.
+    ######################################################################################################
+
+    def __init__(self, itemNumber, quantity, binNumber, inStock, name, price):
         # Double underscore indicates that the attribute is private
         self.__itemNumber = itemNumber
         self.__quantity = quantity
@@ -21,97 +47,271 @@ class item:
         self.__name = name
         self.__price = price
 
-    # Override str(instantiatedObjName) to print a string to conveniently write to CSV file
+    ######################################################################################################
+    ## Function: __str__
+    ## Purpose: Overloads the str output of item object when called by str(itemObj)
+    ##
+    ## Returns: A string of all object attributes formatted in CSV style.
+    ######################################################################################################
     def __str__(self):
         return str(self.itemNumber) + "," + str(self.quantity) + "," + str(self.binNumber) + ",\"" + str(self.inStock) \
                + "\",\"" + self.name + "\"," + str(self.price)
 
-    # class attribute methods for __itemNumber
+    ######################################################################################################
+    ## Function: itemNumber
+    ## Purpose: This is a getter for the private attribute __itemNumber whenever itemObj.itemNumber
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __itemNumber
+    ######################################################################################################
     @property
     def itemNumber(self):
         return self.__itemNumber
+
+    ######################################################################################################
+    ## Function: itemNumber
+    ## Purpose: This is a setter for the private attribute __itemNumber whenever itemObj.itemNumber
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @itemNumber.setter
     def itemNumber(self, itemNumber):
         self.__itemNumber = itemNumber
 
+    ######################################################################################################
+    ## Function: getItemNumber
+    ## Purpose: This is the getter for itemNumber after instantiation.
+    ## Returns: The value of itemNumber
+    ######################################################################################################
+
     def getItemNumber(self):
         return self.itemNumber
+
+    ######################################################################################################
+    ## Function: gsetItemNumber
+    ## Purpose: This is the setter for itemNumber after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setItemNumber(self, itemNumber):
         self.itemNumber = itemNumber
 
     # class attribute methods for __quantity
+
+    ######################################################################################################
+    ## Function: quatity
+    ## Purpose: This is a getter for the private attribute __quantity whenever itemObj.quantity
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __quantity
+    ######################################################################################################
+
     @property
     def quantity(self):
         return self.__quantity
+
+    ######################################################################################################
+    ## Function: quantity
+    ## Purpose: This is a setter for the private attribute __quantity whenever itemObj.quantity
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @quantity.setter
     def quantity(self, quantity):
         self.__quantity = quantity
 
+    ######################################################################################################
+    ## Function: getQuantity
+    ## Purpose: This is the getter for quantity after instantiation.
+    ## Returns: The value of quantity
+    ######################################################################################################
+
     def getQuantity(self):
         return self.quantity
+
+    ######################################################################################################
+    ## Function: getQuantity
+    ## Purpose: This is the setter for quantity after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setQuantity(self, quantity):
         self.quantity = quantity
 
-    # class attribute methods for __binNumber
+    ######################################################################################################
+    ## Function: binNumber
+    ## Purpose: This is a getter for the private attribute __binNumber whenever itemObj.binNumber
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __binNumber
+    ######################################################################################################
+
     @property
     def binNumber(self):
         return self.__binNumber
+
+    ######################################################################################################
+    ## Function: binNumber
+    ## Purpose: This is a setter for the private attribute __binNumber whenever itemObj.binNumber
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @binNumber.setter
     def binNumber(self, binNumber):
         self.__binNumber = binNumber
 
+    ######################################################################################################
+    ## Function: getBinNumber
+    ## Purpose: This is the getter for binNumber after instantiation.
+    ## Returns: The value of itemNumber
+    ######################################################################################################
+
     def getBinNumber(self):
         return self.binNumber
+
+    ######################################################################################################
+    ## Function: setBinNumber
+    ## Purpose: This is the setter for binNumber after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setBinNumber(self, quantity):
         self.binNumber = quantity
 
-    # class attribute methods for __inStock
+    ######################################################################################################
+    ## Function: inStock
+    ## Purpose: This is a getter for the private attribute __inStock whenever itemObj.inStock
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __inStock
+    ######################################################################################################
+
     @property
     def inStock(self):
         return self.__inStock
+
+    ######################################################################################################
+    ## Function: inStock
+    ## Purpose: This is a setter for the private attribute __inStock whenever itemObj.inStock
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @inStock.setter
     def inStock(self, inStock):
         self.__inStock = inStock
 
+    ######################################################################################################
+    ## Function: isInStock
+    ## Purpose: This is the getter for inStock after instantiation.
+    ## Returns: The value of inStock
+    ######################################################################################################
+
     def isInStock(self):
         return self.inStock
+
+    ######################################################################################################
+    ## Function: setIsInStock
+    ## Purpose: This is the setter for inStock after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setIsInStock(self, inStock):
         self.inStock = inStock
 
-    # class attribute methods for __getName
+    ######################################################################################################
+    ## Function: name
+    ## Purpose: This is a getter for the private attribute __name whenever itemObj.name
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __name
+    ######################################################################################################
+
     @property
     def name(self):
         return self.__name
+
+    ######################################################################################################
+    ## Function: name
+    ## Purpose: This is a setter for the private attribute __name whenever itemObj.name
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @name.setter
     def name(self, name):
         self.__name = name
 
+    ######################################################################################################
+    ## Function: getName
+    ## Purpose: This is the getter for name after instantiation.
+    ## Returns: The value of name
+    ######################################################################################################
+
     def getName(self):
         return self.name
+
+    ######################################################################################################
+    ## Function: setName
+    ## Purpose: This is the setter for setName after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setName(self, name):
         self.name = name
 
-    # class attribute methods for __price
+    ######################################################################################################
+    ## Function: price
+    ## Purpose: This is a getter for the private attribute __price whenever itemObj.price
+    ##          is called this function is ran.
+    ##
+    ## Returns: The value of __price
+    ######################################################################################################
+
     @property
     def price(self):
         return self.__price
+
+    ######################################################################################################
+    ## Function: price
+    ## Purpose: This is a setter for the private attribute __price whenever itemObj.price
+    ##          is being assigned a value, this function is called.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     @price.setter
     def price(self, price):
         self.__price = price
 
+    ######################################################################################################
+    ## Function: getPrice
+    ## Purpose: This is the getter for price after instantiation.
+    ## Returns: The value of price
+    ######################################################################################################
+
     def getPrice(self):
         return self.price
+
+    ######################################################################################################
+    ## Function: setPrice
+    ## Purpose: This is the setter for price after instantiation.
+    ##
+    ## Returns: Nothing
+    ######################################################################################################
 
     def setPrice(self, price):
         self.price = price
