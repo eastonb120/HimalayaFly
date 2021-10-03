@@ -10,10 +10,9 @@ import os.path as os
 # By creating a universal description of an item, we are generalizing the unique items.
 # All the unique items can now belong to an item set, AKA the class.
 
-# TODO remove the default args and construct in another form
-
+# abstracted item ADT
 class item:
-    def __init__(self, itemNumber, quantity=20, binNumber=16, inStock=True, name='item', price=1.25):
+    def __init__(self, itemNumber, quantity=20, binNumber=16, inStock='1', name='item', price=1.25):
         # Double underscore indicates that the attribute is private
         self.__itemNumber = itemNumber
         self.__quantity = quantity
@@ -122,7 +121,9 @@ class FileExists(Exception):
     pass
 
 
-# This is our quicksort function. It uses recursion
+# This is our quicksort function. It uses recursion.
+# INPUT: list of items
+# OUTPUT: sorted list of items
 def quickSort(itemList):
     # This is the base case, we can't sort a list that contains only one item so we'll send it back up the call stack
     if len(itemList) <= 1:
@@ -151,43 +152,55 @@ def quickSort(itemList):
         # Here we return the sorted list back up the call stack
         return returnList
 
-
+# This creates an item list from a csv file
+# INPUT: file name
+# OUTPUT: list of items
 def CSVitemImporter(fileName):
+    # list to hold our item objects
     itemList = list()
 
-    try:
+    try: 
+        # open a file to read
         csv_file = open(fileName, mode='r')
+        # DictReader uses first row, which contains headers here, to refer to columns in csv
         csv_reader = csv.DictReader(csv_file)
+        # headers in csv have not been read yet
         readHeader = False
+        # the csv file is read row by row; after the header, items are created and added to the list
         for row in csv_reader:
             if readHeader == False:
                 pass
                 readHeader = True
             else:
-                itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]),
-                                     bool(row["in_stock"]), row["name"], float(row["price"])))
-        csv_file.close()
+                # adds an item created from a row in the csv to the list
+                itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]), row["in_stock"]
+                                     , row["name"], float(row["price"])))
     except IOError:
         print("File Not Located or Locked by Another Application")
 
     return itemList
 
-
+# This creates an output csv file
+# INPUT: list of items, string for csv headers, file name
+# OUTPUT: none
 def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = True):
     if os.exists(fileName):
         raise FileExists("File already exists.")
     else:
-        csv_file = open(fileName, "w")
-        # Write the header to the output CSV file
+        # open a file to write in
+        fileObject = open(fileName, "w")
+        # prints the headers for the output csv file
         if printOutputToConsole:
             print(CSVheaderString)
-        csv_file.write(CSVheaderString + "\n")
-        # Write the items to separate lines in the CSV
+        # writes the headers for the output csv file in the file
+        fileObject.write(CSVheaderString + "\n")
+        # cycles through items in item list and writes the items to separate lines in csv
         for itemObj in itemList:
             if printOutputToConsole:
                 print(str(itemObj))
-            csv_file.write(str(itemObj) + "\n")
-        csv_file.close()
+            fileObject.write(str(itemObj) + "\n")
+        # closes csv file
+        fileObject.close()
 
 
 # Driver
