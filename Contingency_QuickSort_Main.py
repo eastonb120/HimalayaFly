@@ -177,17 +177,17 @@ def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = Tr
     if os.exists(fileName):
         raise FileExists("File already exists.")
     else:
-        fileObject = open(fileName, "w")
+        csv_file = open(fileName, "w")
         # Write the header to the output CSV file
         if printOutputToConsole:
             print(CSVheaderString)
-        fileObject.write(CSVheaderString + "\n")
+        csv_file.write(CSVheaderString + "\n")
         # Write the items to separate lines in the CSV
         for itemObj in itemList:
             if printOutputToConsole:
                 print(str(itemObj))
-            fileObject.write(str(itemObj) + "\n")
-        fileObject.close()
+            csv_file.write(str(itemObj) + "\n")
+        csv_file.close()
 
 
 # Driver
