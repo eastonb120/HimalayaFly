@@ -166,6 +166,7 @@ def CSVitemImporter(fileName):
             else:
                 itemList.append(item(int(row["item_number"]), int(row["quantity"]), int(row["bin_num"]),
                                      bool(row["in_stock"]), row["name"], float(row["price"])))
+        csv_file.close()
     except IOError:
         print("File Not Located or Locked by Another Application")
 
