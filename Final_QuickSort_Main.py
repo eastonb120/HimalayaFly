@@ -34,7 +34,7 @@ class item:
     ## Function: __init__
     ## Purpose: Constructor of the item class
     ## Arguments: itemNumber - Manufacturer Item Number
-    ##            quatity - Quantity of Items
+    ##            quantity - Quantity of Items
     ##            binNumber - The bin in which the item resides
     ##            inStock - Are there any items in inventory
     ##            name - Item name
@@ -95,7 +95,7 @@ class item:
         return self.itemNumber
 
     ######################################################################################################
-    ## Function: gsetItemNumber
+    ## Function: setItemNumber
     ## Purpose: This is the setter for itemNumber after instantiation.
     ##
     ## Returns: Nothing
@@ -107,7 +107,7 @@ class item:
     # class attribute methods for __quantity
 
     ######################################################################################################
-    ## Function: quatity
+    ## Function: quantity
     ## Purpose: This is a getter for the private attribute __quantity whenever itemObj.quantity
     ##          is called this function is ran.
     ##
@@ -352,7 +352,7 @@ def quickSort(itemList):
 
         ################################################################################################################
         ## Parallel Processing - This could be implemented when performing the recursive calls, based on our group's
-        ## reseach, we found that it was computationally too expensive to implement for such a small dataset and classes
+        ## research, we found that it was computationally too expensive to implement for such a small dataset and classes
         ## from Python's multiprocessing library would need to be overloaded an tweaked to behave in recursive calls.
         ##
         ## Problem Reformulation - The recursive calls transform on large sort into many smaller sorts.
@@ -361,7 +361,7 @@ def quickSort(itemList):
         ## code or the programmer calling the function doesn't need to worry about managing which sub-list gets sorted
         ## when or how it's broken into multiple lists.
         ##
-        ## Decomposition - The list is broken into smaller lists which are handled seperately.
+        ## Decomposition - The list is broken into smaller lists which are handled separately.
         ################################################################################################################
 
         # This is a recursive call to sort the "lesserThan" list prior to assigning it to the returnlist
@@ -394,8 +394,9 @@ def CSVitemImporter(fileName):
         readHeader = False
         # the CSV file is read row by row; after the header, items are created and added to the list
         for row in csv_reader:
+            # Check flag to see if header has been read.
             if readHeader == False:
-                pass
+                # If not iterate through header row and change flag to true.
                 readHeader = True
             else:
                 # adds an item created from a row in the CSV to the list
