@@ -1,0 +1,46 @@
+         502 function calls (488 primitive calls) in 0.002 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.002    0.002 <string>:1(<module>)
+       14    0.000    0.000    0.000    0.000 Main.py:118(quantity)
+       14    0.000    0.000    0.000    0.000 Main.py:161(binNumber)
+       14    0.000    0.000    0.000    0.000 Main.py:204(inStock)
+       14    0.000    0.000    0.000    0.000 Main.py:247(name)
+       14    0.000    0.000    0.000    0.000 Main.py:290(price)
+     15/1    0.000    0.000    0.000    0.000 Main.py:336(quickSort)
+        1    0.000    0.000    0.000    0.000 Main.py:386(CSVitemImporter)
+        1    0.000    0.000    0.001    0.001 Main.py:422(CSVitemWriter)
+        1    0.000    0.000    0.002    0.002 Main.py:440(main)
+       14    0.000    0.000    0.000    0.000 Main.py:47(__init__)
+       14    0.000    0.000    0.000    0.000 Main.py:62(__str__)
+       76    0.000    0.000    0.000    0.000 Main.py:73(itemNumber)
+       62    0.000    0.000    0.000    0.000 Main.py:95(getItemNumber)
+        2    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:186(__init__)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+       15    0.000    0.000    0.000    0.000 cp1252.py:18(encode)
+        3    0.000    0.000    0.000    0.000 cp1252.py:22(decode)
+       16    0.000    0.000    0.000    0.000 csv.py:107(__next__)
+        1    0.000    0.000    0.000    0.000 csv.py:81(__init__)
+        1    0.000    0.000    0.000    0.000 csv.py:90(__iter__)
+       31    0.000    0.000    0.000    0.000 csv.py:93(fieldnames)
+        3    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_decode}
+       15    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.000    0.000 {built-in method _csv.reader}
+        2    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000    0.002    0.002 {built-in method builtins.exec}
+       52    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       17    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        2    0.001    0.000    0.001    0.000 {built-in method io.open}
+       52    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        7    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        7    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+       15    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+
+
+
+Process finished with exit code 0
