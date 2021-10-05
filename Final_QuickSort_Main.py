@@ -1,4 +1,5 @@
 import csv
+
 ######################################################################################################
 ## QuickSort Item ADT
 ## Date: 10/3/2021
@@ -299,6 +300,7 @@ class item:
 ## Arguments: itemList - A list of item objects instantiated from item class.
 ## Returns: A list of item objects sorted in ascending order based on item_number.
 ######################################################################################################
+@profile
 def quickSort(itemList):
     # This is the base case, we can't sort a list that contains only one item so we'll send it back up the call stack
     if len(itemList) <= 1:
