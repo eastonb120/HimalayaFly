@@ -1,0 +1,41 @@
+         471 function calls (457 primitive calls) in 0.001 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.001    0.001 <string>:1(<module>)
+        2    0.000    0.000    0.000    0.000 _bootlocale.py:23(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:185(__init__)
+        1    0.000    0.000    0.000    0.000 codecs.py:259(__init__)
+        1    0.000    0.000    0.000    0.000 codecs.py:308(__init__)
+        2    0.000    0.000    0.000    0.000 codecs.py:318(decode)
+       16    0.000    0.000    0.000    0.000 csv.py:106(__next__)
+        1    0.000    0.000    0.000    0.000 csv.py:80(__init__)
+        1    0.000    0.000    0.000    0.000 csv.py:89(__iter__)
+       31    0.000    0.000    0.000    0.000 csv.py:92(fieldnames)
+       14    0.000    0.000    0.000    0.000 main.py:120(quantity)
+       14    0.000    0.000    0.000    0.000 main.py:163(binNumber)
+       14    0.000    0.000    0.000    0.000 main.py:206(inStock)
+       14    0.000    0.000    0.000    0.000 main.py:249(name)
+       14    0.000    0.000    0.000    0.000 main.py:292(price)
+     15/1    0.000    0.000    0.000    0.000 main.py:338(quickSort)
+        1    0.000    0.000    0.000    0.000 main.py:388(CSVitemImporter)
+        1    0.000    0.000    0.000    0.000 main.py:424(CSVitemWriter)
+        1    0.000    0.000    0.001    0.001 main.py:442(main)
+       14    0.000    0.000    0.000    0.000 main.py:49(__init__)
+       14    0.000    0.000    0.000    0.000 main.py:64(__str__)
+       76    0.000    0.000    0.000    0.000 main.py:75(itemNumber)
+       62    0.000    0.000    0.000    0.000 main.py:97(getItemNumber)
+        2    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _csv.reader}
+        2    0.000    0.000    0.000    0.000 {built-in method _locale.nl_langinfo}
+        1    0.000    0.000    0.001    0.001 {built-in method builtins.exec}
+       52    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       17    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        2    0.000    0.000    0.000    0.000 {built-in method io.open}
+       52    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        7    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        7    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+       15    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
