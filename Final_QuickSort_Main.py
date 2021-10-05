@@ -378,9 +378,9 @@ def CSVitemImporter(fileName):
 ######################################################################################################
 ## Function:  CSVitemWriter
 ## Purpose:   Creates a CSV file from a list of item objects
-## Arguments: itemList - a list of item objects
+## Arguments: itemList - A list of item objects
 ##            CSVheaderString - String containing headers for the CSV file
-##            fileName - NThe name of the file to output
+##            fileName - The name of the file to output
 ##            printOutputToConsole - Determines if output is printed to console
 ## Returns:   Nothing
 ## Note:      Data Representation - Transforms a list of item objects into a CSV file for storage
