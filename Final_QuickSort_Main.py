@@ -1,4 +1,5 @@
 import csv
+import sys
 
 ######################################################################################################
 ## QuickSort Item ADT
@@ -300,7 +301,6 @@ class item:
 ## Arguments: itemList - A list of item objects instantiated from item class.
 ## Returns: A list of item objects sorted in ascending order based on item_number.
 ######################################################################################################
-
 def quickSort(itemList):
     # This is the base case, we can't sort a list that contains only one item so we'll send it back up the call stack
     if len(itemList) <= 1:
@@ -348,6 +348,7 @@ def quickSort(itemList):
 ## Purpose:   Creates a list of item objects from a CSV file
 ## Arguments: fileName - The name of the file to import
 ## Returns:   itemList - A list of item objects
+##            True/False - Flag if read was sucessful
 ## Note:      Data Representation - Transforms a CSV file's data into a list of item objects to
 ##                                  facilitate the sorting function
 ######################################################################################################
@@ -375,7 +376,10 @@ def CSVitemImporter(fileName):
     except IOError:
         print("File Not Located or Locked by Another Application")
 
-    return itemList
+    # If an IOError occurs, return False for executed normally and an empty list
+        return False, list()
+    # If no IOError occurs, return True for executed normally and the list containing items
+    return True, itemList
 
 ######################################################################################################
 ## Function:  CSVitemWriter
@@ -403,12 +407,46 @@ def CSVitemWriter(itemList, CSVheaderString, fileName, printOutputToConsole = Tr
     # closes CSV file
     fileObject.close()
 
+######################################################################################################
+## Function: checkArgCount
+## Purpose: Checks if expected number of arguments provided
+## Arguments: expectNumberArgs - The number of arguments that are required
+##            notificationMessage - What you want to tell the user if not correct number of args
+## Returns: fileObject - The file in memory, its expected that the object will be closed elsewhere
+## Notes: "Expected Parameters: InputFile, OutputFile"
+######################################################################################################
+
+def checkArgCount(expectNumberArgs, notificationMessage):
+
+    rightCount = True
+
+    if (len(sys.argv)) != (expectNumberArgs + 1):
+        print(notificationMessage)
+        rightCount = False
+
+    return rightCount
 
 # Driver
-def main():
-    inputFile = "InventoryManifest.csv"
-    outputFile = "InventoryManifest_Output.csv"
-    CSVheadString = '"item_number","quantity","bin_num","in_stock","name","price"'
-    CSVitemWriter(quickSort(CSVitemImporter(inputFile)), CSVheadString, outputFile)
+def main(os_args):
 
-main()
+    CSVheadString = '"item_number","quantity","bin_num","in_stock","name","price"'
+
+    # Ensure we have two commandline arguments. Function will output expected args
+    if checkArgCount(2, "Expected Parameters: InputFile, OutputFile"):
+        # If checkArgCount returns true, continue executing
+        sucessfulRead, itemList = CSVitemImporter(os_args[1])
+        if sucessfulRead:
+            CSVitemWriter(quickSort(itemList), CSVheadString, os_args[2])
+            # exit under normal condtions
+            return
+        else:
+            # exit after not being able to read file
+            return
+    else:
+        # exit if arg count is wrong
+        return
+
+
+
+
+main(sys.argv)
