@@ -16,9 +16,9 @@ How to grab cProfile Stats
 main.py doesn't require command line args. This was forked from "PythonTeam2_Final_QuickSort_Main.py" prior to
 implementing command line args.
 
-To see an output from cProfile, please run "main.py". I personally run Linux, so I did the following (I'm sure you know
+To see an output from cProfile, please run "main.py". On Linux, we did the following (I'm sure you know
  but just want to cover our bases):
 
 python main.py >> <profileOutputFile>.txt
 
-I can't speak for Windows... I think Jessica copied and pasted the output after running "main.py" in IDLE.
+For Windows, we copied and pasted the output after running "main.py" in IDLE to a text file.
