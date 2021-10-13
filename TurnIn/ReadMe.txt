@@ -21,4 +21,4 @@ To see an output from cProfile, please run "main.py". I personally run Linux, so
 
 python main.py >> <profileOutputFile>.txt
 
-I can't speak for Windows... I think Jessica copied and pasted the output after running "main.py" in IDLE.
+Fow Windows, I ran "main.py" in IDLE and then copied the cProfile results into a text file.
